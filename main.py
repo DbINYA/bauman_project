@@ -3,9 +3,11 @@ import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPalette, QBrush, QPixmap, QImage, QFont, QIcon
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 
 from zeropredict import ZeroPredict
+from dialogwindow import Dialog
+from help_functions import preporations
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -68,8 +70,10 @@ class Main(QMainWindow, Ui_MainWindow):
         self.w.show()
 
     def file_predict(self):
-        pass
-
+        self.fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', "(*.csv)")[0]
+        self.dialog = Dialog()
+        self.dialog.show()
+        self.close()
 
 try:
     if __name__ == '__main__':
