@@ -31,7 +31,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label_notification.setText(_translate("Dialog", "Файл с ответами был схранён по пути:"))
+        self.label_notification.setText(_translate("Dialog", "Файл с ответами был сохранён по пути:"))
 
 
 
