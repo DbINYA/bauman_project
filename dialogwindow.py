@@ -31,13 +31,18 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label_notification.setText(_translate("Dialog", "Файл с ответами был сохранён по пути:"))
+        self.label_notification.setText(_translate("Dialog", "Файл с ответами был сохранён по пути:None"))
 
 
 
 class Dialog(QMainWindow, Ui_Dialog):
 
-    def __init__(self):
+    def __init__(self, name):
         super().__init__()
         self.setupUi(self)
         self.setWindowIcon(QIcon('images/icon.png'))
+        self.name = name
+        self.check()
+
+    def check(self):
+        self.label_notification.setText(f"Сохранён в той же папке: {self.name}")

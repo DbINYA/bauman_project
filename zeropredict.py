@@ -2,6 +2,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QPalette, QBrush, QPixmap, QImage, QFont, QIcon
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
+from help_functions import preporations
+
 
 class Ui_ZeroPredict(object):
     def setupUi(self, MainWindow):
@@ -139,7 +141,7 @@ class ZeroPredict(QMainWindow, Ui_ZeroPredict):
         self.labelFP.move(int(self.width() * 0.75), int(self.height() * 0.3))
         self.labelFP.setFixedSize(int(self.width() * 0.15), int(self.height() * 0.05))
 
-        self.answer.move(int(self.width() * 0.45), int(self.height() * 0.5))
+        self.answer.move(int(self.width() * 0.35), int(self.height() * 0.5))
         self.answer.setFixedSize(int(self.width() * 0.6), int(self.height() * 0.05))
 
         self.Button_predict.move(int(self.width() * 0.286), int(self.height() * 0.66))
@@ -155,6 +157,7 @@ class ZeroPredict(QMainWindow, Ui_ZeroPredict):
             self.VW_data = float(c)
             self.FP_data = float(d)
             self.labeltext.setText('Введите значения признаков')
-            self.answer.setText(f'{self.IW_data}, {self.IF_data}, {self.VW_data}, {self.FP_data}')
+            depth, width = preporations([[self.IW_data, self.IF_data, self.VW_data, self.FP_data]])
+            self.answer.setText(f'Depth:{depth}, Width:{width}')
         except ValueError:
             self.labeltext.setText('Неверный тип данных')

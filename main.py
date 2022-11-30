@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 
 from zeropredict import ZeroPredict
 from dialogwindow import Dialog
-from help_functions import preporations
+from help_functions import predict_big_data
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -71,7 +71,10 @@ class Main(QMainWindow, Ui_MainWindow):
 
     def file_predict(self):
         self.fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', "(*.csv)")[0]
-        self.dialog = Dialog()
+        print(self.fname)
+        pred_path = predict_big_data(self.fname)
+        print(pred_path)
+        self.dialog = Dialog(pred_path)
         self.dialog.show()
         self.close()
 
