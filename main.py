@@ -71,9 +71,7 @@ class Main(QMainWindow, Ui_MainWindow):
 
     def file_predict(self):
         self.fname = QFileDialog.getOpenFileName(self, 'Выбрать файл', '', "(*.csv)")[0]
-        print(self.fname)
         pred_path = predict_big_data(self.fname)
-        print(pred_path)
         self.dialog = Dialog(pred_path)
         self.dialog.show()
         self.close()
