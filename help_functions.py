@@ -33,7 +33,10 @@ def models_predict(data):
 def preporations(data):
     scaler = my_scaler()
     try:
-        scaler_data = scaler.transform(data)
+        if len(data) == 1:
+    	    scaler_data = scaler.transform(data)
+        else:
+            scaler_data = scaler.transform(data.values)
         return models_predict(scaler_data)
     except:
 	    pass
@@ -43,7 +46,7 @@ def predict_big_data(name):
     try:
         df = pd.read_csv(name)
         scaler = my_scaler()
-        scaler_data = scaler.transform(df)
+        scaler_data = scaler.transform(df.values)
         data = models_predict(scaler_data)
         pred_df = pd.DataFrame(data, columns=['Depth', 'Width'])
         new_path = '/'.join(name.split('/')[:-1]) + '/pred_data.csv'
