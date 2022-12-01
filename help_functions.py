@@ -41,14 +41,14 @@ def preporations(data):
 
 def predict_big_data(name):
     try:
-	    df = pd.read_csv(name)
-	    scaler = my_scaler()
-	    scaler_data = scaler.transform(df)
-	    data = models_predict(scaler_data)
-	    pred_df = pd.DataFrame(data, columns=['Depth', 'Width'])
-	    new_path = '/'.join(name.split('/')[:-1]) + '/pred_data.csv'
-	    path_for_user = '/'.join(name.split('/')[-2:-1]) + '/pred_data.csv'
-	    pred_df.to_csv(new_path, index=False)
-	    return path_for_user
+        df = pd.read_csv(name)
+        scaler = my_scaler()
+        scaler_data = scaler.transform(df)
+        data = models_predict(scaler_data)
+        pred_df = pd.DataFrame(data, columns=['Depth', 'Width'])
+        new_path = '/'.join(name.split('/')[:-1]) + '/pred_data.csv'
+        path_for_user = '/'.join(name.split('/')[-2:-1]) + '/pred_data.csv'
+        pred_df.to_csv(new_path, index=False)
+        return path_for_user
     except:
-	    pass
+        pass
