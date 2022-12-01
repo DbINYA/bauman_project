@@ -33,10 +33,10 @@ def models_predict(data):
 def preporations(data):
 	scaler = my_scaler()
 	try:
-		scaler_data = scaler.transform(data)
-		return models_predict(scaler_data)
+        scaler_data = scaler.transform(data)
+        return models_predict(scaler_data)
 	except:
-		pass
+	    pass
 
 
 def predict_big_data(name):
